@@ -1,18 +1,18 @@
 resource "google_firebase_web_app" "basic" {
-    provider = google-beta
-    project = var.firebase_project_id
-    display_name = "${var.project_name}-web-app"
+  provider     = google-beta
+  project      = var.firebase_project_id
+  display_name = "${var.project_name}-web-app"
 }
 
 data "google_firebase_web_app_config" "basic" {
   provider   = google-beta
-  project = var.firebase_project_id
+  project    = var.firebase_project_id
   web_app_id = google_firebase_web_app.basic.app_id
 }
 
 data "template_file" "firebase_config" {
-  template  = "${file("templates/firebase-config.tpl")}"
-  vars      =  {
+  template = file("${path.module}/templates/firebase-config.tpl")
+  vars = {
     app_id              = google_firebase_web_app.basic.app_id
     api_key             = data.google_firebase_web_app_config.basic.api_key
     auth_domain         = data.google_firebase_web_app_config.basic.auth_domain
@@ -25,10 +25,10 @@ data "template_file" "firebase_config" {
 }
 
 resource "local_file" "firebase_config" {
-    content = "${data.template_file.firebase_config.rendered}"
-    filename = var.firebase_config_file_path
-    depends_on = [
-      data.google_firebase_web_app_config.basic,
-      data.template_file.firebase_config
-    ]
+  content  = data.template_file.firebase_config.rendered
+  filename = var.firebase_config_file_path
+  depends_on = [
+    data.google_firebase_web_app_config.basic,
+    data.template_file.firebase_config
+  ]
 }

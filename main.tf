@@ -18,3 +18,10 @@ module "firebase_web_app" {
   project_name              = local.project_env_name
   firebase_config_file_path = var.firebase_config_file_path
 }
+
+module "firestore_db" {
+  source = "./modules/firestore-db"
+
+  firebase_project_id = module.firebase_project.firebase_project.project
+  location            = var.default_location
+}

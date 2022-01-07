@@ -18,6 +18,11 @@ variable "env" {
   }
 }
 
+variable "default_location" {
+  description = "The default location for app engine dependent services the project (such as Firestore) & storage"
+  type        = string
+}
+
 variable "region" {
   description = "The region that the project will be created in. (This should be region format, e.g. europe-west2)"
   type        = string

@@ -1,4 +1,16 @@
-# terraform-thunk-firebase
+# terraform-firebase
+A single Terraform module that allows you to build out the following Firebase components:
+* Firebase project
+* Firebase web app
+
+and provides you with a formatted typescript environment file to use for Firebase intialisation in your javascript/typescript webapp.
+## Usage
+to follow...
+
+
+
+## Additional Info
+
 
 Terraform User is the google user account used to authenticate with GCP and Firebase. To ensure you are already logged in using this google account as your GOOGLE_DEFAULT_CREDENTIALS, ensure you have run the following command
 

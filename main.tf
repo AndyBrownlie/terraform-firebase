@@ -10,7 +10,7 @@ module "firebase_project" {
   project_name         = local.project_env_name
   firebase_admin_users = var.firebase_admin_users
 }
-
+/*
 module "firebase_web_app" {
   source = "./modules/firebase-web-app"
 
@@ -18,7 +18,7 @@ module "firebase_web_app" {
   project_name              = local.project_env_name
   firebase_config_file_path = var.firebase_config_file_path
 }
-
+*/
 module "firestore_db" {
   source = "./modules/firestore-db"
 
